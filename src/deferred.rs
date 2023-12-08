@@ -192,8 +192,7 @@ impl<T: TypePath> Clone for RaycastMesh<T> {
 /// The `RaycastSource` component is used to generate rays with the specified `cast_method`. A `ray`
 /// is generated when the RaycastSource is initialized, either by waiting for update_raycast system
 /// to process the ray, or by using a `with_ray` function.`
-#[derive(Component, Reflect)]
-#[reflect(Component)]
+#[derive(Component)]
 pub struct RaycastSource<T: TypePath> {
     /// The method used to generate rays for this raycast.
     pub cast_method: RaycastMethod,
@@ -368,7 +367,7 @@ impl<T: TypePath> RaycastSource<T> {
 }
 
 /// Specifies the method used to generate rays.
-#[derive(Clone, Debug, Reflect)]
+#[derive(Clone, Debug)]
 pub enum RaycastMethod {
     /// Use the mouse cursor to build a ray.
     Cursor,
