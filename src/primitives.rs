@@ -246,8 +246,8 @@ pub mod rays {
         }
     }
 
-    impl From<Ray> for Ray3d {
-        fn from(ray: Ray) -> Self {
+    impl From<bevy_math::prelude::Ray3d> for Ray3d {
+        fn from(ray: bevy_math::prelude::Ray3d) -> Self {
             Ray3d::new(ray.origin, ray.direction)
         }
     }
