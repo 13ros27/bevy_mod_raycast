@@ -1,4 +1,4 @@
-use bevy_math::{Vec3, Vec3A};
+use bevy_math::{Vec3, Vec3A, Ray3d as BevyRay3d};
 
 pub use rays::*;
 
@@ -246,8 +246,8 @@ pub mod rays {
         }
     }
 
-    impl From<bevy_math::ray::Ray3d> for Ray3d {
-        fn from(ray: bevy_math::ray::Ray3d) -> Self {
+    impl From<BevyRay3d> for Ray3d {
+        fn from(ray: BevyRay3d) -> Self {
             Ray3d::new(ray.origin, ray.direction)
         }
     }
