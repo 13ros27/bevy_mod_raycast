@@ -51,9 +51,6 @@ impl<T: TypePath + Send + Sync> Plugin for DeferredRaycastingPlugin<T> {
                 .chain(),
         );
 
-        app.register_type::<RaycastMesh<T>>()
-            .register_type::<RaycastSource<T>>();
-
         #[cfg(feature = "debug")]
         app.add_systems(
             First,
@@ -154,8 +151,7 @@ impl<T> RaycastPluginState<T> {
 /// # Requirements
 ///
 /// The marked entity must also have a [Mesh](bevy_render::mesh::Mesh) component.
-#[derive(Component, Debug, Reflect)]
-#[reflect(Component)]
+#[derive(Component, Debug)]
 pub struct RaycastMesh<T: TypePath> {
     #[reflect(ignore)]
     pub intersections: Vec<(Entity, IntersectionData)>,
@@ -202,11 +198,8 @@ pub struct RaycastSource<T: TypePath> {
     pub should_early_exit: bool,
     /// Determines how raycasting should consider entity visibility.
     pub visibility: RaycastVisibility,
-    #[reflect(skip_serializing)]
     pub ray: Option<Ray3d>,
-    #[reflect(ignore)]
     intersections: Vec<(Entity, IntersectionData)>,
-    #[reflect(ignore)]
     _marker: PhantomData<fn() -> T>,
 }
 
