@@ -153,9 +153,7 @@ impl<T> RaycastPluginState<T> {
 /// The marked entity must also have a [Mesh](bevy_render::mesh::Mesh) component.
 #[derive(Component, Debug)]
 pub struct RaycastMesh<T: TypePath> {
-    #[reflect(ignore)]
     pub intersections: Vec<(Entity, IntersectionData)>,
-    #[reflect(ignore)]
     _marker: PhantomData<T>,
 }
 
