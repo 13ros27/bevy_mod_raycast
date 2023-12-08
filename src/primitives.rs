@@ -1,5 +1,4 @@
 use bevy_math::{Vec3, Vec3A};
-use bevy_reflect::Reflect;
 
 pub use rays::*;
 
@@ -8,7 +7,7 @@ pub enum Primitive3d {
     Plane { point: Vec3, normal: Vec3 },
 }
 
-#[derive(Debug, Clone, Reflect)]
+#[derive(Debug, Clone)]
 pub struct IntersectionData {
     position: Vec3,
     normal: Vec3,
@@ -67,7 +66,6 @@ impl IntersectionData {
 pub mod rays {
     use super::Primitive3d;
     use bevy_math::{prelude::*, Vec3A};
-    use bevy_reflect::Reflect;
     use bevy_render::{camera::Camera, primitives::Aabb};
     use bevy_transform::components::GlobalTransform;
     use bevy_window::Window;
@@ -107,7 +105,7 @@ pub mod rays {
     }
 
     /// A 3D ray, with an origin and direction. The direction is guaranteed to be normalized.
-    #[derive(Reflect, Debug, PartialEq, Copy, Clone, Default)]
+    #[derive(Debug, PartialEq, Copy, Clone, Default)]
     pub struct Ray3d {
         pub(crate) origin: Vec3A,
         pub(crate) direction: Vec3A,
@@ -255,7 +253,7 @@ pub mod rays {
     }
 }
 
-#[derive(Debug, PartialEq, Copy, Clone, Reflect)]
+#[derive(Debug, PartialEq, Copy, Clone)]
 pub struct Triangle {
     pub v0: Vec3A,
     pub v1: Vec3A,
