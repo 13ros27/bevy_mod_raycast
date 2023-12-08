@@ -248,7 +248,7 @@ pub mod rays {
 
     impl From<BevyRay3d> for Ray3d {
         fn from(ray: BevyRay3d) -> Self {
-            Ray3d::new(ray.origin, ray.direction)
+            Ray3d::new(ray.origin, *ray.direction)
         }
     }
 }
